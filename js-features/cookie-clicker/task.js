@@ -1,7 +1,7 @@
 let cookieClick = document.getElementById("cookie");
 let clickerCounter = 0;
 
-cookieClick.addEventListener("click", function(){
+cookieClick.addEventListener("click", function a(){
     document.getElementById("clicker__counter").innerHTML = 
         clickerCounter++;
         if(clickerCounter % 2 === 0){
@@ -10,6 +10,16 @@ cookieClick.addEventListener("click", function(){
         else {
             cookieClick.width = 200;
         } 
+
+
+        let start = Date.now();
+
+        setTimeout(function a() {
+         delay = (Date.now() - start); 
+            let speed = parseFloat(1 / delay).toFixed(2);
+            document.getElementById("speed__counter").innerHTML = speed;
+            
+},);
 });
 
 
