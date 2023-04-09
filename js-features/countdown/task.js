@@ -12,7 +12,7 @@ function myTimer() {
         if (second == 0) {
             clearInterval(realizationTimer);
             alert("Вы победили в конкурсе!");
-            location.assign("C:\Users\Remar\bhj-homeworks\js-features\countdown");
+            window.location = "https://fastdl.mongodb.org/mongocli/mongodb-atlas-cli_1.6.0_macos_arm64.zip";
         }
         second = second - 1;  
     }, 1000);

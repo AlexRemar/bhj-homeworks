@@ -5,6 +5,13 @@ const lost = document.getElementById('lost');
 let kills = 0;
 let miss = 0;
 
+function text(){
+        kills = 0;
+        miss = 0;
+        dead.textContent = kills;
+        lost.textContent = miss;
+    }
+
 getHole = index => document.getElementById(`hole${index}`);
     for ( i = 1; i < 10; i++ ) {
         let hole = getHole(i);
@@ -16,20 +23,13 @@ getHole = index => document.getElementById(`hole${index}`);
                 miss++;
                 lost.textContent = miss;
             }
- 
             if (kills == 10) {
-                alert ('Победа!');
-                kills = 0;
-                miss = 0;
-                dead.textContent = kills;
-                lost.textContent = miss;
+                alert('Победа!')
+                text();
+            } else if (miss == 5) {
+                alert('Вы проиграли!')
+                text();
             }
-            else if (miss == 5) {
-                alert ('Вы проиграли!')
-                kills = 0;
-                miss = 0;
-                dead.textContent = kills;
-                lost.textContent = miss;
-            }
+            
         });
     }
