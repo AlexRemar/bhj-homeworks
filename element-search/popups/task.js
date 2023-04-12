@@ -1,20 +1,20 @@
-let x = document.getElementsByClassName('modal__close modal__close_times');
-let btn = document.getElementsByClassName('btn btn_danger modal__close show-success');
+const popup = document.querySelector('#modal_main');
+let xBtn = document.querySelectorAll('div.modal__close');
+const successBtn = document.querySelector('.show-success');
+const success = document.querySelector('#modal_success');
 
+popup.className = 'modal modal_active';
 
- Array.from(x)[0].addEventListener('click', function() {  
-    let pop_up = document.querySelector('#modal_main').classList;  
-    pop_up.toggle('modal_active');                                
-    pop_up.toggle('modal__close');                                
-  });
+for (let x of xBtn){
+  x.onclick = () => {
+      popup.className = 'modal';
+      success.className = 'modal';
+  }
+}
 
-  Array.from(btn)[0].addEventListener('click', function() {                            
-    let pop_up = document.querySelector('#modal_success').classList;   
-    pop_up.toggle('modal_active');                                   
-   });
+successBtn.onclick = function () {
+  success.className = 'modal modal_active';
+  popup.className = 'modal';
+};
  
-   Array.from(x)[1].addEventListener('click', function() {                            
-    let pop_up = document.querySelector('#modal_success').classList;   
-    pop_up.toggle('modal_active');
-    pop_up.toggle('modal__close');                                   
-   });
+

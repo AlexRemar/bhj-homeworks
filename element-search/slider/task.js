@@ -1,8 +1,38 @@
-const slides = document.querySelectorAll('.slider__item');
+const slides = Array.from(document.querySelectorAll('.slider__item'));
+const activeSlide = document.querySelector('.slider__item_active')
 const back = document.querySelector('.slider__arrow_prev');
 const forward = document.querySelector('.slider__arrow_next');
 
-let slideNumber = 0;
+
+
+forward.onclick = function (){
+    let index = slides.findIndex((slide) => slide === activeSlide);
+    slides[index].className = 'slider__item';
+    let activeIndex = index<slides.length ? index++ : index = slides.length;
+    console.log(index)
+    slides[activeIndex].classList.add('slider__item_active');
+}
+
+
+back.onclick = function (){
+    let index = slides.findIndex((slide) => slide === activeSlide);
+    slides[index].className = 'slider__item';
+    let activeIndex = index > 0 ? index-- : index = slides.length;
+    console.log(index)
+    slides[activeIndex].classList.add('slider__item_active');
+}
+
+
+
+
+
+
+
+
+
+
+
+/*let slideNumber = 0;
 
 forward.onclick = function () {
     slideNumber++;
@@ -24,4 +54,4 @@ back.onclick = function () {
         slideNumber = slides.length - 1;
     }
     slides[slideNumber].className = 'slider__item slider__item_active';
-};
+};*/
