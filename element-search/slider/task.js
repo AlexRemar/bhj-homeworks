@@ -1,11 +1,11 @@
 const slides = [...document.querySelectorAll('.slider__item')];
-let child = document.querySelector('.slider__item_active');
+let ActiveSlide = document.querySelector('.slider__item_active');
 const back = document.querySelector('.slider__arrow_prev');
 const forward = document.querySelector('.slider__arrow_next');
 
 
 forward.onclick = function (){
-    let index = slides.findIndex((slide) => (slide.contains(child)));    //Получаем индекс активного элемента
+    let index = slides.findIndex((slide) => (slide.contains(ActiveSlide)));    //Получаем индекс активного элемента
     console.log(index)
     slides[index].className = ('slider__item');     //Снимаем активность с него
     console.log(index)
@@ -18,9 +18,10 @@ forward.onclick = function (){
 
 
 back.onclick = function (){
-    let index = slides.findIndex((slide) => (slide.contains(child)));
+    let index = slides.findIndex((slide) => (slide.contains(ActiveSlide)));
     slides[index].className = 'slider__item';
-    let activeIndex = index > 0 ? index-- : index = slides.length;
+    index--
+    let activeIndex = index < 0 ? slides.length : index;
     console.log(index)
     slides[activeIndex].classList.add('slider__item_active');
 }
