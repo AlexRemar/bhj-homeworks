@@ -3,7 +3,7 @@ let slideIndex = 0;
 
     for (let rotator of rotators) {
         function index(n){
-            if(n > rotator.children.length){
+            if(n >= rotator.children.length){
                 slideIndex = 0;
             }
             if(n < 1){
@@ -19,8 +19,3 @@ let slideIndex = 0;
         slideIndex++
         index(slideIndex)
     }, 1000);
-
-
-
-    //Работает, но после завершения цикла зависает на
-    // на секунду и выдает ошибку
