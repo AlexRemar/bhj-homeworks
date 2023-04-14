@@ -16,9 +16,6 @@
             }
           }
         e.preventDefault();
-        menuSub.document.querySelectorAll('a[href=""]').onclick = function(){
-        return false
-      }
     }
     menuLinks.forEach(link => link.addEventListener('click', btnClick));
 
