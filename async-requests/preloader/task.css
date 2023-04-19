@@ -3,6 +3,8 @@ body {
 }
 .item {
   display: flex;
+  flex-wrap: wrap;
+  width: 150px;
 }
 
 .item__code {

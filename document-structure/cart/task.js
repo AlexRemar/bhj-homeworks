@@ -19,11 +19,11 @@ for (let basket of basketAdd) {
 
     const productImg = product.querySelector('.product__image').src;
     const count = product.querySelector('.product__quantity-value').innerText;
-    const createCart = `<div class="cart__product" data-id="${id}">
+    const cartProduct = `<div class="cart__product" data-id="${id}">
                                 <img class="cart__product-image" src="${productImg}">
                                 <div class="cart__product-count">${count}</div>
                                 </div>`;
-    carts.insertAdjacentHTML('beforeend', createCart);
+    carts.insertAdjacentHTML('beforeend', cartProduct);
 });
 }
 

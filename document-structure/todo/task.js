@@ -1,12 +1,20 @@
 const tasks = document.getElementsByClassName('tasks__list');
+const text = document.getElementById('task__input');
+
+
+text.oninput = () => {
+    if(text.value[0] === ' '){
+        text.value = '';
+    }
+  }
 
 for (const task of tasks) {
     const button = document.getElementById('tasks__add');
     const form = document.querySelector('input');
 
     button.addEventListener('click', function(e){
-        if(form.value != ''){
         e.preventDefault();
+        if(form.value != ''){
         const createTask = document.createElement('div'); 
         createTask.className = 'task';
         task.insertAdjacentElement('afterEnd', createTask);
@@ -21,12 +29,14 @@ for (const task of tasks) {
         taskRemove.className = 'task__remove';
         createTask.insertAdjacentElement('beforeEnd', taskRemove);
         taskRemove.innerHTML = '&times;'
+
+        text.value = "";
         }
 
-        const x = document.querySelector('.task__remove')
-        const activeTask = document.getElementsByClassName('task');
-        x.addEventListener('click', function(){
-            activeTask[activeTask.length - 1].remove()
+        const x = document.querySelector('.task__remove');
+        const activeTask = document.querySelector('.task');
+        x.addEventListener('click', function(e){
+            activeTask.remove(e.target)         
         })
     })
 }

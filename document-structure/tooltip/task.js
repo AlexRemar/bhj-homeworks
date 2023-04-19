@@ -18,15 +18,24 @@ for (const link of links) {
     link.removeAttribute("title");
         
     tooltip.classList.add('tooltip_active');
-    let too = tooltip.getBoundingClientRect();
-    let lin = link.getBoundingClientRect();
-
-    if((too.top - lin.top) > link.offsetHeight){
-        tooltip.style.top = lin.top + link.offsetHeight + 'px';
-        tooltip.style.left = too.left + 'px';
-    } else{
-        tooltip.style.top = too.top + 'px';
-        tooltip.style.left = lin.left + 'px';
-    }   
+    const too = tooltip.getBoundingClientRect();
+    const lin = link.getBoundingClientRect();
+    switch (e.target.tooltip) {
+        case 'left':
+          tooltip.style.top = lin.top + 'px';
+          tooltip.style.left = (lin.left + too.left - too.right) + 'px';
+          break;
+        case 'right':
+          tooltip.style.top = lin.top + 'px';
+          tooltip.style.left = lin.right + 'px';        
+          break;
+        case 'top':
+          tooltip.style.top = (lin.top + too.top - too.bottom) + 'px';
+          tooltip.style.left = lin.left + 'px';            
+          break;
+        default:
+          tooltip.style.top = lin.bottom + 'px';
+          tooltip.style.left = lin.left + 'px'; 
+    }    
     })   
 }
