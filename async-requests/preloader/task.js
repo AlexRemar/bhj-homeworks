@@ -6,12 +6,8 @@ let xhr = new XMLHttpRequest();
 xhr.addEventListener('readystatechange', () => {
     if(xhr.readyState === xhr.DONE){
         loader.className = 'loader'
-
-        const valuteListJ = JSON.parse(xhr.responseText).response.Valute;
-        const valuteList = [];   
+        const valuteListJ = JSON.parse(xhr.responseText).response.Valute;  
         for (const key in valuteListJ) {
-        valuteList.push({name: valuteListJ[key].CharCode, value: valuteListJ[key].Value});
-
         const formRate = `<div class="item__code">
                         ${valuteListJ[key].CharCode}
                     </div>
