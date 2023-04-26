@@ -2,11 +2,11 @@ const tasks = document.getElementsByClassName('tasks__list');
 const text = document.getElementById('task__input');
 
 
-text.oninput = () => {
+/*text.oninput = () => {                      //Этот метод по-моему куда действеннее чем trim
     if(text.value[0] === ' '){
         text.value = '';
     }
-  }
+  }*/
 
 for (const task of tasks) {
     const button = document.getElementById('tasks__add');
@@ -14,7 +14,7 @@ for (const task of tasks) {
 
     button.addEventListener('click', function(e){
         e.preventDefault();
-        if(form.value != ''){
+        if(form.value.trim()){
         const createTask = document.createElement('div'); 
         createTask.className = 'task';
         task.insertAdjacentElement('afterEnd', createTask);
@@ -22,7 +22,7 @@ for (const task of tasks) {
         const taskDiv = createTask.appendChild(document.createElement('div'));  
         taskDiv.className = 'task__title'
         createTask.insertAdjacentElement('beforeEnd', taskDiv);
-        taskDiv.insertAdjacentText('beforeend', form.value)
+        taskDiv.insertAdjacentText('beforeEnd', form.value)
 
         const taskRemove = createTask.appendChild(document.createElement('a'));    
         taskRemove.setAttribute('href', '#');
@@ -30,7 +30,7 @@ for (const task of tasks) {
         createTask.insertAdjacentElement('beforeEnd', taskRemove);
         taskRemove.innerHTML = '&times;'
 
-        text.value = "";
+        text.value = '';
         }
 
         const x = document.querySelector('.task__remove');

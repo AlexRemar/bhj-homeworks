@@ -8,15 +8,13 @@ for (let basket of basketAdd) {
     const id = product.dataset.id;
     const countProduct = +e.target.parentNode.querySelector('.product__quantity-value').innerText;
 
-    for (let cart of carts.children) {
-        if (cart.dataset.id === id) {
-            let basketCount = cart.querySelector('.cart__product-count');
-            let totalCount = +basketCount.innerText;
-            basketCount.innerText = totalCount + countProduct;
-            return false;
-        }
-    }
-
+    const cards = Array.from(document.querySelectorAll('.cart__product'));
+    const productInCard = cards.find(el => el.dataset.id == e.target.closest('.product').dataset.id);
+    if(productInCard) {
+        let basketCount = productInCard.querySelector('.cart__product-count');
+        let totalCount = +basketCount.innerText;
+        basketCount.innerText = totalCount + countProduct;
+    } else {
     const productImg = product.querySelector('.product__image').src;
     const count = product.querySelector('.product__quantity-value').innerText;
     const cartProduct = `<div class="cart__product" data-id="${id}">
@@ -24,6 +22,7 @@ for (let basket of basketAdd) {
                                 <div class="cart__product-count">${count}</div>
                                 </div>`;
     carts.insertAdjacentHTML('beforeend', cartProduct);
+}
 });
 }
 
